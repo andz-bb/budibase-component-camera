@@ -1,0 +1,23 @@
+{
+  "type": "component",
+  "metadata": {},
+  "schema": {
+    "name": "camera",
+    "friendlyName": "Camera",
+    "description": "Take pictures in Budibase 📸",
+    "icon": "Camera",
+    "settings": [
+      {
+        "type": "field/attachment",
+        "label": "Field",
+        "key": "field",
+        "required": true
+      },
+      {
+        "type": "text",
+        "key": "label",
+        "label": "Label"
+      }
+    ]
+  }
+}
