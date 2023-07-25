@@ -1,4 +1,4 @@
-# Budibase Camera
+# Budibase Camera (beta)
 
 ![budibase camera demo](https://user-images.githubusercontent.com/110921612/209187286-58d8ae54-1275-4ed6-b7de-6cedf15a80ec.gif)
 
