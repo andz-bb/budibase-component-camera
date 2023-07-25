@@ -2,6 +2,7 @@
   import { getContext, onDestroy } from "svelte";
   import Captures from "./Captures.svelte";
   import Loading from "./Loading.svelte";
+  import { ImageCapture } from "image-capture";
 
   export let field;
   export let label;
