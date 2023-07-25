@@ -62,10 +62,6 @@
       imageCapture = new ImageCapture(track);
 
       videoSource.srcObject = stream;
-      // Fix for iOS Safari from https://leemartin.dev/hello-webrtc-on-safari-11-e8bcb5335295
-      videoSource.setAttribute("autoplay", "");
-      videoSource.setAttribute("muted", "");
-      videoSource.setAttribute("playsinline", "");
       videoSource.play();
       videoSource = videoSource;
 
