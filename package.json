@@ -1,6 +1,6 @@
 {
   "name": "camera",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Take pictures in Budibase 📸",
   "license": "MIT",
   "svelte": "index.js",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@crownframework/svelte-error-boundary": "^1.0.3",
+    "image-capture": "^0.4.0",
     "svelte": "^3.49.0"
   },
   "devDependencies": {
