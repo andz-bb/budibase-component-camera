@@ -52,27 +52,33 @@
     unsubscribe?.();
   });
 
-  const openPreview = async () => {
-    loading = true;
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-      });
-      const track = stream.getVideoTracks()[0];
-      imageCapture = new ImageCapture(track);
+const openPreview = async () => {
+  loading = true;
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videoDevices = devices.filter(device => device.kind === 'videoinput');
+    const rearCamera = videoDevices.find(device => device.label.toLowerCase().includes('back')) || videoDevices[0];
 
-      videoSource.srcObject = stream;
-      videoSource.play();
-      videoSource = videoSource;
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { deviceId: rearCamera.deviceId }
+    });
 
-      imageCapture.takePhoto();
-      previewEnabled = true;
-    } catch (error) {
-      console.log(error);
-      previewEnabled = false;
-    }
-    loading = false;
-  };
+    const track = stream.getVideoTracks()[0];
+    imageCapture = new ImageCapture(track);
+
+    videoSource.srcObject = stream;
+    videoSource.play();
+    videoSource = videoSource;
+
+    await imageCapture.takePhoto();
+    previewEnabled = true;
+  } catch (error) {
+    console.log(error);
+    previewEnabled = false;
+  }
+  loading = false;
+};
+
 
   const capture = async () => {
     blob = await imageCapture.takePhoto();
