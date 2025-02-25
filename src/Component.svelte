@@ -94,16 +94,27 @@
   };
 
   const uploadImage = async (image) => {
+    if (!image) {
+      console.error("No image to upload");
+      return [];
+    }
+
+    // Get the tableId
+    const tableId = formContext?.dataSource?.tableId;
+    if (!tableId) {
+      console.error("No tableId available for upload");
+      return [];
+    }
+
     let data = new FormData();
     data.append("file", image, "capture.jpg");
-    imageCaptured = false;
+
     try {
-      const res = await API.uploadAttachment({
-        data,
-        tableId: formContext?.dataSource?.tableId,
-      });
-      return res;
+      // Call the API correctly - with tableId as first parameter and data as second
+      const res = await API.uploadAttachment(tableId, data);
+      return res || [];
     } catch (error) {
+      console.error("Upload API error:", error);
       return [];
     }
   };
